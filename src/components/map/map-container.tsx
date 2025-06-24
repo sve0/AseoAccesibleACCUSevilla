@@ -47,7 +47,8 @@ const Markers = ({ locations, onMarkerClick }: { locations: Location[]; onMarker
 
     return () => {
         clusterer.current?.clearMarkers();
-        Object.values(markerRoots.current).forEach(root => root.unmount());
+        const rootsToUnmount = Object.values(markerRoots.current);
+        setTimeout(() => rootsToUnmount.forEach(root => root.unmount()), 0);
         markerElements.current = {};
         markerRoots.current = {};
         clusterer.current = null;
@@ -58,7 +59,9 @@ const Markers = ({ locations, onMarkerClick }: { locations: Location[]; onMarker
     if (!map || !clusterer.current) return;
     
     clusterer.current.clearMarkers();
-    Object.values(markerRoots.current).forEach(root => root.unmount());
+    const rootsToUnmount = Object.values(markerRoots.current);
+    setTimeout(() => rootsToUnmount.forEach(root => root.unmount()), 0);
+    
     markerElements.current = {};
     markerRoots.current = {};
     
