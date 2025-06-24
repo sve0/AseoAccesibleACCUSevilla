@@ -65,9 +65,7 @@ export function AseoMap({ locations, apiKey }: AseoMapProps) {
     if (activeFilter === 'TODOS') {
       return locations;
     }
-    if (activeFilter === 'ADAPTADO') {
-      return locations.filter((location) => location.adaptado);
-    }
+    // Simplified logic as requested. All filters now work on the 'tipo' field.
     return locations.filter((location) => location.tipo === activeFilter);
   }, [activeFilter, locations]);
 
