@@ -105,7 +105,7 @@ export function AseoMap({ locations, apiKey }: AseoMapProps) {
           userLocation={userLocation}
         />
         <div className="absolute top-4 left-4 z-10 bg-card p-2 rounded-lg shadow-lg">
-          <Image src="/logo.jpg" alt="Logo AseoAccesibleACCUSevilla" width={150} height={50} data-ai-hint="company logo" className="object-contain" />
+          <Image src="/logo.jpg" alt="Logo AseoAccesibleACCUSevilla" width={50} height={17} data-ai-hint="company logo" className="object-contain" />
         </div>
 
         <MapSidebar onCenterUser={handleCenterOnUser} onShowProximity={handleProximityClick} onShowInfo={() => setInfoSheetOpen(true)} isLocating={isLocating} />

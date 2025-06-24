@@ -1,7 +1,8 @@
 "use client";
 
-import { Map, AdvancedMarker, Pin } from '@vis.gl/react-google-maps';
+import { Map, AdvancedMarker } from '@vis.gl/react-google-maps';
 import type { Location } from '@/types/location';
+import { Store, Landmark, Accessibility, MapPin as DefaultPinIcon } from 'lucide-react';
 
 type MapContainerProps = {
   locations: Location[];
@@ -12,6 +13,21 @@ type MapContainerProps = {
 };
 
 export function MapContainer({ locations, onMarkerClick, center, zoom, userLocation }: MapContainerProps) {
+  
+  const getMarkerIcon = (location: Location) => {
+    const commonClasses = "h-5 w-5 text-white";
+    if (location.adaptado) {
+      return <Accessibility className={commonClasses} />;
+    }
+    if (location.tipo === 'Establecimiento') {
+      return <Store className={commonClasses} />;
+    }
+    if (location.tipo === 'CentroPublico') {
+      return <Landmark className={commonClasses} />;
+    }
+    return <DefaultPinIcon className={commonClasses} />;
+  };
+  
   return (
     <Map
       mapId="aseo-accesible-map"
@@ -34,11 +50,9 @@ export function MapContainer({ locations, onMarkerClick, center, zoom, userLocat
           onClick={() => onMarkerClick(location)}
           title={location.nombre}
         >
-          <Pin 
-            background={location.adaptado ? 'var(--colors-accent)' : 'var(--colors-primary)'}
-            glyphColor="#fff"
-            borderColor={location.adaptado ? 'var(--colors-accent)' : 'var(--colors-primary)'}
-          />
+           <div className="w-8 h-8 rounded-full bg-[#7C3AED] flex items-center justify-center border-2 border-white shadow-lg">
+            {getMarkerIcon(location)}
+          </div>
         </AdvancedMarker>
       ))}
       {userLocation && (

@@ -27,16 +27,15 @@ export function MapFilters({ activeFilter, onFilterChange }: MapFiltersProps) {
             <Button
               key={filter.id}
               variant={activeFilter === filter.id ? 'default' : 'ghost'}
-              size="sm"
+              size="icon"
               onClick={() => onFilterChange(filter.id)}
               className={cn(
-                "flex items-center gap-2 transition-all",
+                "h-9 w-9 transition-all",
                 activeFilter === filter.id && "bg-primary text-primary-foreground",
                 activeFilter !== filter.id && "text-muted-foreground",
               )}
             >
               {filter.icon}
-              <span className="hidden sm:inline">{filter.label}</span>
             </Button>
           ))}
         </div>
