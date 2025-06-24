@@ -65,7 +65,6 @@ export function AseoMap({ locations, apiKey }: AseoMapProps) {
     if (activeFilter === 'TODOS') {
       return locations;
     }
-    // Simplified logic as requested. All filters now work on the 'tipo' field.
     return locations.filter((location) => location.tipo === activeFilter);
   }, [activeFilter, locations]);
 
@@ -96,6 +95,11 @@ export function AseoMap({ locations, apiKey }: AseoMapProps) {
     }
   }, [userLocation, toast]);
   
+  const handleCenterOnLocation = useCallback((location: Location) => {
+    setMapCenter(location.coordenadas);
+    setZoom(17);
+    setSelectedLocation(location);
+  }, []);
 
   return (
     <APIProvider apiKey={apiKey} libraries={['marker']}>
@@ -116,7 +120,12 @@ export function AseoMap({ locations, apiKey }: AseoMapProps) {
         <MapFilters activeFilter={activeFilter} onFilterChange={setActiveFilter} />
 
         <LocationSheet location={selectedLocation} isOpen={!!selectedLocation} onClose={handleSheetClose} />
-        <ProximitySheet locations={nearestLocations} isOpen={isProximitySheetOpen} onClose={() => setProximitySheetOpen(false)} />
+        <ProximitySheet 
+          locations={nearestLocations} 
+          isOpen={isProximitySheetOpen} 
+          onClose={() => setProximitySheetOpen(false)}
+          onCenterLocation={handleCenterOnLocation}
+        />
         <InfoSheet isOpen={isInfoSheetOpen} onClose={() => setInfoSheetOpen(false)} />
       </div>
     </APIProvider>
