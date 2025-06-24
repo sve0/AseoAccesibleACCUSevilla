@@ -3,7 +3,7 @@
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription } from "@/components/ui/sheet";
 import { Badge } from "@/components/ui/badge";
 import type { Location } from "@/types/location";
-import { MapPin, Clock, Building, Wheelchair } from "lucide-react";
+import { MapPin, Clock, Building, Accessibility } from "lucide-react";
 
 type LocationSheetProps = {
   location: Location | null;
@@ -43,7 +43,7 @@ export function LocationSheet({ location, isOpen, onClose }: LocationSheetProps)
             </div>
             {location.adaptado && (
                 <div className="flex items-center gap-3">
-                    <Wheelchair className="h-5 w-5 text-accent-foreground" />
+                    <Accessibility className="h-5 w-5 text-accent-foreground" />
                     <div>
                         <p className="font-semibold">Accesibilidad</p>
                         <Badge variant="secondary" className="bg-accent/20 text-accent-foreground">Aseo Adaptado</Badge>

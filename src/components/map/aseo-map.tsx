@@ -7,7 +7,7 @@ import { MapContainer } from '@/components/map/map-container';
 import { MapFilters } from '@/components/map/map-filters';
 import { MapSidebar } from '@/components/map/map-sidebar';
 import { LocationSheet } from '@/components/map/location-sheet';
-import { ProximitySheet } from '@/components/map/proximity-sheet';
+import { ProximitySheet } from '@/components/map/proximity-list-sheet';
 import { InfoSheet } from '@/components/map/info-sheet';
 import { getDistanceFromLatLonInKm } from '@/lib/utils';
 import Image from 'next/image';
