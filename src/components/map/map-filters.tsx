@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { Tooltip, TooltipProvider, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
 import type { FilterType } from "@/types/location";
 import { Globe, Accessibility, Store, Landmark } from "lucide-react";
@@ -14,7 +14,7 @@ type MapFiltersProps = {
 
 const filters: { id: FilterType; label: string; icon: React.ReactNode }[] = [
   { id: 'TODOS', label: 'Todos', icon: <Globe /> },
-  { id: 'ADAPTADO', label: 'Adaptado', icon: <Accessibility /> },
+  { id: 'Adaptado', label: 'Adaptado', icon: <Accessibility /> },
   { id: 'Establecimiento', label: 'Establecimiento', icon: <Store /> },
   { id: 'CentroPublico', label: 'Centro Público', icon: <Landmark /> },
 ];

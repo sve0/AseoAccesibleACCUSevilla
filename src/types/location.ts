@@ -5,10 +5,10 @@ export type Location = {
   coordenadas: { lat: number; lng: number };
   horario: string;
   adaptado: boolean;
-  tipo: 'Establecimiento' | 'CentroPublico' | string;
+  tipo: string;
 };
 
-export type FilterType = 'TODOS' | 'ADAPTADO' | 'Establecimiento' | 'CentroPublico';
+export type FilterType = 'TODOS' | 'Adaptado' | 'Establecimiento' | 'CentroPublico';
 
 export type LocationWithDistance = Location & {
   distance: number;

@@ -50,19 +50,14 @@ export async function getLocations(): Promise<Location[]> {
         const lng = parseFloat(latLng[1]);
         if (isNaN(lat) || isNaN(lng)) return null;
 
-        const esAdaptado = item.Adaptado?.toUpperCase() === 'SI';
-        // If it is adapted, we classify its type as 'ADAPTADO' to unify the filtering logic.
-        // Otherwise, we use the type from the 'Tipo' column.
-        const tipo = esAdaptado ? 'ADAPTADO' : (item.Tipo || 'No especificado');
-
         return {
           id: item.id || `${index}`,
           nombre: item.Nombre || 'Sin nombre',
           direccion: item.Dirección || 'Sin dirección',
           coordenadas: { lat, lng },
           horario: item.Horario || 'No especificado',
-          adaptado: esAdaptado,
-          tipo: tipo,
+          adaptado: item.Adaptado?.toUpperCase() === 'SI',
+          tipo: item.Tipo || 'No especificado',
         };
       })
       .filter((item): item is Location => item !== null);
