@@ -41,15 +41,6 @@ export function LocationSheet({ location, isOpen, onClose }: LocationSheetProps)
                     <p className="text-muted-foreground">{location.tipo === 'CentroPublico' ? 'Centro Público' : location.tipo}</p>
                 </div>
             </div>
-            {location.adaptado && (
-                <div className="flex items-center gap-3">
-                    <Accessibility className="h-5 w-5 text-accent-foreground" />
-                    <div>
-                        <p className="font-semibold">Accesibilidad</p>
-                        <Badge variant="secondary" className="bg-accent/20 text-accent-foreground">Aseo Adaptado</Badge>
-                    </div>
-                </div>
-            )}
         </div>
       </SheetContent>
     </Sheet>

@@ -56,7 +56,6 @@ export async function getLocations(): Promise<Location[]> {
           direccion: item.Dirección || 'Sin dirección',
           coordenadas: { lat, lng },
           horario: item.Horario || 'No especificado',
-          adaptado: item.Adaptado?.toUpperCase() === 'SI',
           tipo: item.Tipo || 'No especificado',
         };
       })

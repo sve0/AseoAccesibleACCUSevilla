@@ -17,7 +17,7 @@ export function MapContainer({ locations, onMarkerClick, center, zoom, userLocat
   
   const getMarkerIcon = (location: Location) => {
     const commonClasses = "h-4 w-4 text-white";
-    if (location.adaptado) {
+    if (location.tipo === 'Adaptado') {
       return <Accessibility className={commonClasses} />;
     }
     if (location.tipo === 'Establecimiento') {

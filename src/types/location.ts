@@ -4,7 +4,6 @@ export type Location = {
   direccion: string;
   coordenadas: { lat: number; lng: number };
   horario: string;
-  adaptado: boolean;
   tipo: string;
 };
 
