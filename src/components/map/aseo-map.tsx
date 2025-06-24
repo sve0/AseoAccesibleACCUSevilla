@@ -82,8 +82,6 @@ export function AseoMap({ locations, apiKey }: AseoMapProps) {
 
   const handleMarkerClick = useCallback((location: Location) => {
     setSelectedLocation(location);
-    setMapCenter(location.coordenadas);
-    setZoom(17);
   }, []);
   
   const handleSheetClose = useCallback(() => {
