@@ -16,7 +16,7 @@ type MapContainerProps = {
 export function MapContainer({ locations, onMarkerClick, center, zoom, userLocation, onCameraChanged }: MapContainerProps) {
   
   const getMarkerIcon = (location: Location) => {
-    const commonClasses = "h-5 w-5 text-white";
+    const commonClasses = "h-4 w-4 text-white";
     if (location.adaptado) {
       return <Accessibility className={commonClasses} />;
     }
@@ -49,7 +49,7 @@ export function MapContainer({ locations, onMarkerClick, center, zoom, userLocat
           onClick={() => onMarkerClick(location)}
           title={location.nombre}
         >
-           <div className="w-8 h-8 rounded-full bg-[#7C3AED] flex items-center justify-center border-2 border-white shadow-lg">
+           <div className="w-6 h-6 rounded-full bg-[#7C3AED] flex items-center justify-center border-2 border-white shadow-lg">
             {getMarkerIcon(location)}
           </div>
         </AdvancedMarker>

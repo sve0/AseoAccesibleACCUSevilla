@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
 import type { FilterType } from "@/types/location";
 import { Globe, Accessibility, Store, Landmark } from "lucide-react";
@@ -21,25 +22,33 @@ const filters: { id: FilterType; label: string; icon: React.ReactNode }[] = [
 export function MapFilters({ activeFilter, onFilterChange }: MapFiltersProps) {
   return (
     <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10">
-      <Card className="p-1.5 shadow-lg">
-        <div className="flex items-center gap-1">
-          {filters.map((filter) => (
-            <Button
-              key={filter.id}
-              variant={activeFilter === filter.id ? 'default' : 'ghost'}
-              size="icon"
-              onClick={() => onFilterChange(filter.id)}
-              className={cn(
-                "h-9 w-9 transition-all",
-                activeFilter === filter.id && "bg-primary text-primary-foreground",
-                activeFilter !== filter.id && "text-muted-foreground",
-              )}
-            >
-              {filter.icon}
-            </Button>
-          ))}
-        </div>
-      </Card>
+      <TooltipProvider>
+        <Card className="p-1.5 shadow-lg">
+          <div className="flex items-center gap-1">
+            {filters.map((filter) => (
+              <Tooltip key={filter.id}>
+                <TooltipTrigger asChild>
+                  <Button
+                    variant={activeFilter === filter.id ? 'default' : 'ghost'}
+                    size="icon"
+                    onClick={() => onFilterChange(filter.id)}
+                    className={cn(
+                      "h-9 w-9 transition-all",
+                      activeFilter === filter.id && "bg-primary text-primary-foreground",
+                      activeFilter !== filter.id && "text-muted-foreground",
+                    )}
+                  >
+                    {filter.icon}
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>{filter.label}</p>
+                </TooltipContent>
+              </Tooltip>
+            ))}
+          </div>
+        </Card>
+      </TooltipProvider>
     </div>
   );
 }

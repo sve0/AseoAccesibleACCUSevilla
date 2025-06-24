@@ -62,11 +62,13 @@ export function AseoMap({ locations, apiKey }: AseoMapProps) {
   }, [toast]);
   
   const filteredLocations = useMemo(() => {
-    if (activeFilter === 'TODOS') return locations;
-    return locations.filter((location) => {
-      if (activeFilter === 'ADAPTADO') return location.adaptado;
-      return location.tipo === activeFilter;
-    });
+    if (activeFilter === 'TODOS') {
+      return locations;
+    }
+    if (activeFilter === 'ADAPTADO') {
+      return locations.filter((location) => location.adaptado);
+    }
+    return locations.filter((location) => location.tipo === activeFilter);
   }, [activeFilter, locations]);
 
   const nearestLocations = useMemo((): LocationWithDistance[] => {
