@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, useMemo, useEffect, useCallback } from 'react';
+import { useState, useMemo, useCallback } from 'react';
 import type { Location, FilterType, LocationWithDistance } from '@/types/location';
-import { APIProvider } from '@vis.gl/react-google-maps';
+import { APIProvider, type MapCameraChangedEvent } from '@vis.gl/react-google-maps';
 import { MapContainer } from '@/components/map/map-container';
 import { MapFilters } from '@/components/map/map-filters';
 import { MapSidebar } from '@/components/map/map-sidebar';
@@ -31,6 +31,11 @@ export function AseoMap({ locations, apiKey }: AseoMapProps) {
   const [zoom, setZoom] = useState(13);
 
   const { toast } = useToast();
+
+  const handleCameraChange = useCallback((e: MapCameraChangedEvent) => {
+    setMapCenter(e.detail.center);
+    setZoom(e.detail.zoom);
+  }, []);
 
   const handleCenterOnUser = useCallback(() => {
     setIsLocating(true);
@@ -103,6 +108,7 @@ export function AseoMap({ locations, apiKey }: AseoMapProps) {
           center={mapCenter}
           zoom={zoom}
           userLocation={userLocation}
+          onCameraChanged={handleCameraChange}
         />
         <div className="absolute top-4 left-4 z-10 bg-card p-2 rounded-lg shadow-lg">
           <Image src="/logo.jpg" alt="Logo AseoAccesibleACCUSevilla" width={50} height={17} data-ai-hint="company logo" className="object-contain" />

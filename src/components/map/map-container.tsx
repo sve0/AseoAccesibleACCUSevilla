@@ -1,6 +1,6 @@
 "use client";
 
-import { Map, AdvancedMarker } from '@vis.gl/react-google-maps';
+import { Map, AdvancedMarker, type MapCameraChangedEvent } from '@vis.gl/react-google-maps';
 import type { Location } from '@/types/location';
 import { Store, Landmark, Accessibility, MapPin as DefaultPinIcon } from 'lucide-react';
 
@@ -10,9 +10,10 @@ type MapContainerProps = {
   center: { lat: number; lng: number };
   zoom: number;
   userLocation: { lat: number; lng: number } | null;
+  onCameraChanged: (e: MapCameraChangedEvent) => void;
 };
 
-export function MapContainer({ locations, onMarkerClick, center, zoom, userLocation }: MapContainerProps) {
+export function MapContainer({ locations, onMarkerClick, center, zoom, userLocation, onCameraChanged }: MapContainerProps) {
   
   const getMarkerIcon = (location: Location) => {
     const commonClasses = "h-5 w-5 text-white";
@@ -39,9 +40,7 @@ export function MapContainer({ locations, onMarkerClick, center, zoom, userLocat
       gestureHandling={'greedy'}
       disableDefaultUI={true}
       mapTypeId="roadmap"
-      style={{
-        transition: 'center 0.5s ease-in-out, zoom 0.5s ease-in-out',
-      }}
+      onCameraChanged={onCameraChanged}
     >
       {locations.map((location) => (
         <AdvancedMarker
