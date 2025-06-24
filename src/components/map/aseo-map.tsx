@@ -52,7 +52,7 @@ export function AseoMap({ locations, apiKey }: AseoMapProps) {
         setMapCenter(newUserLocation);
         setZoom(15);
         setIsLocating(false);
-        toast({ title: 'Ubicación encontrada', description: 'Mapa centrado en su posición.' });
+        toast({ title: 'Ubicación encontrada', description: 'Mapa centrado en su posición.', duration: 3000 });
       },
       () => {
         toast({ title: 'Error de Geolocalización', description: 'No se pudo obtener su ubicación. Por favor, compruebe los permisos.', variant: 'destructive' });
