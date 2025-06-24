@@ -3,7 +3,6 @@
 import { useState, useMemo, useCallback } from 'react';
 import type { Location, FilterType, LocationWithDistance } from '@/types/location';
 import { APIProvider, type MapCameraChangedEvent } from '@vis.gl/react-google-maps';
-import { MapContainer } from '@/components/map/map-container';
 import { MapFilters } from '@/components/map/map-filters';
 import { MapSidebar } from '@/components/map/map-sidebar';
 import { LocationSheet } from '@/components/map/location-sheet';
@@ -12,6 +11,17 @@ import { InfoSheet } from '@/components/map/info-sheet';
 import { getDistanceFromLatLonInKm } from '@/lib/utils';
 import Image from 'next/image';
 import { useToast } from '@/hooks/use-toast';
+import dynamic from 'next/dynamic';
+import { Skeleton } from '@/components/ui/skeleton';
+
+const MapContainer = dynamic(
+  () => import('@/components/map/map-container').then(mod => mod.MapContainer),
+  { 
+    ssr: false,
+    loading: () => <Skeleton className="h-full w-full" /> 
+  }
+);
+
 
 type AseoMapProps = {
   locations: Location[];
