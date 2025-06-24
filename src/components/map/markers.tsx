@@ -49,8 +49,12 @@ export const Markers = ({ locations, onMarkerClick }: MarkersProps) => {
         
         clustererRef.current.clearMarkers();
         
-        rootsRef.current.forEach(root => root.unmount());
+        // Defer unmounting to avoid race conditions with React's render cycle.
+        const rootsToUnmount = new Map(rootsRef.current);
         rootsRef.current.clear();
+        if (rootsToUnmount.size > 0) {
+            setTimeout(() => rootsToUnmount.forEach(r => r.unmount()), 0);
+        }
 
         const markers = locations.map(location => {
             const markerElement = document.createElement('div');
@@ -80,8 +84,12 @@ export const Markers = ({ locations, onMarkerClick }: MarkersProps) => {
                 clustererRef.current.clearMarkers();
                 clustererRef.current = null;
             }
-            rootsRef.current.forEach(root => root.unmount());
+            // Defer unmounting to avoid race conditions with React's render cycle.
+            const rootsToUnmount = new Map(rootsRef.current);
             rootsRef.current.clear();
+            if (rootsToUnmount.size > 0) {
+                setTimeout(() => rootsToUnmount.forEach(r => r.unmount()), 0);
+            }
         };
     }, []);
 
