@@ -3,7 +3,7 @@
 import { Map, useMap, type MapCameraChangedEvent, AdvancedMarker } from '@vis.gl/react-google-maps';
 import type { Location } from '@/types/location';
 import { BriefcaseMedical, Landmark, Store, MapPin as DefaultPinIcon } from 'lucide-react';
-import { MarkerClusterer } from '@googlemaps/markerclusterer';
+import { MarkerClusterer, type Cluster } from '@googlemaps/markerclusterer';
 import { useEffect, useRef } from 'react';
 import { createRoot } from 'react-dom/client';
 
@@ -39,7 +39,8 @@ const Markers = ({ locations, onMarkerClick }: { locations: Location[]; onMarker
         return clusterElement;
     }
     const renderer = {
-        render: ({ count, position }: { count: number; position: google.maps.LatLngLiteral }) => {
+        render: (cluster: Cluster) => {
+            const { count, position } = cluster;
             return new google.maps.marker.AdvancedMarkerElement({ position, content: buildClusterContent(count), zIndex: 10 });
         }
     };
