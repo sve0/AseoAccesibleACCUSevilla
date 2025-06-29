@@ -54,5 +54,16 @@ Considerando los niveles gratuitos de ambos servicios, el coste de tu aplicació
 -   **API de Google Maps:** 0 € (siempre que te mantengas por debajo de ~28,500 visitas al mapa al mes)
 -   **Total Estimado:** **0 €**
 
-### Recomendación
-Para evitar sorpresas, es muy recomendable configurar **alertas de presupuesto** en tu cuenta de facturación de Google Cloud Platform. De esta manera, recibirás una notificación si tu uso se acerca a un límite que tú definas, dándote control total sobre los gastos.
+## Acción Crítica: Configurar Alertas de Presupuesto
+
+Para evitar sorpresas y tener control total sobre los gastos, es **muy recomendable** configurar alertas de presupuesto en tu cuenta de facturación de Google Cloud Platform. Esto te notificará por correo electrónico si los costes superan un umbral que tú definas.
+
+### Pasos Resumidos:
+1.  En la **Consola de Google Cloud**, ve a **Facturación > Presupuestos y alertas**.
+2.  Haz clic en **"Crear presupuesto"**.
+3.  Dale un nombre y déjalo aplicado a todo el proyecto.
+4.  Establece un **importe objetivo bajo**, por ejemplo, **5 €**. Este es solo el umbral para las notificaciones, no un coste real.
+5.  Configura las reglas de umbral para recibir notificaciones por correo electrónico (por ejemplo, al 50%, 90% y 100% del importe).
+6.  Guarda el presupuesto.
+
+Con esto, recibirás un aviso mucho antes de agotar el crédito gratuito, dándote tiempo para analizar el uso o tomar decisiones.
