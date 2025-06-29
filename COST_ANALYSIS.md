@@ -67,3 +67,29 @@ Para evitar sorpresas y tener control total sobre los gastos, es **muy recomenda
 6.  Guarda el presupuesto.
 
 Con esto, recibirás un aviso mucho antes de agotar el crédito gratuito, dándote tiempo para analizar el uso o tomar decisiones.
+
+---
+
+## Preguntas Frecuentes sobre Costes y Presupuestos
+
+### ¿Qué pasa si mi uso supera el umbral del presupuesto?
+**La aplicación continúa funcionando.** Un presupuesto, por defecto, **solo envía notificaciones por correo electrónico**. No detiene los servicios automáticamente. Es una herramienta de alerta, no un interruptor de apagado.
+
+### ¿El presupuesto se descuenta de mi crédito gratuito?
+No. El flujo de costes es el siguiente:
+1.  Tu aplicación utiliza servicios (p. ej., la API de Google Maps), lo que genera un coste.
+2.  Ese coste se deduce primero del **crédito mensual gratuito de $200**.
+3.  El presupuesto simplemente **monitoriza el coste total generado**, independientemente del crédito, y te avisa cuando se alcanzan los umbrales que definiste (p. ej., 5 €).
+En resumen, puedes recibir una alerta de presupuesto y aun así no pagar nada porque el coste está cubierto por el crédito.
+
+### ¿Se me cobrará si supero el crédito mensual gratuito?
+**Sí.** Este es el punto más importante. Si el coste total de tu uso en un mes supera los $200 del crédito gratuito, la cantidad excedente **se facturará a tu método de pago**. Por eso las alertas de presupuesto son tan importantes.
+
+### ¿Cómo puedo detener la aplicación automáticamente para evitar cargos?
+Si prefieres que los servicios se detengan en lugar de generar cargos extra, necesitas una **configuración avanzada**. El método estándar implica:
+1.  **Crear un tema de Pub/Sub** en Google Cloud.
+2.  **Conectar tu presupuesto a ese tema de Pub/Sub** para que envíe un mensaje programático cuando se alcance el 100% del presupuesto.
+3.  **Crear una Cloud Function** que se active con los mensajes de ese tema.
+4.  **Programar la función** para que realice una acción drástica, como **deshabilitar la facturación del proyecto** o desactivar la API específica.
+
+Esta es una medida de seguridad muy potente, pero es una configuración avanzada. Para la mayoría de los casos, las alertas por correo electrónico son suficientes para mantener el control.
