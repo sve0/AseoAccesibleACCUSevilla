@@ -2,7 +2,8 @@ import { getLocations } from '@/lib/data';
 import { AseoMap } from '@/components/map/aseo-map';
 import { Card, CardContent } from '@/components/ui/card';
 
-export const dynamic = 'force-dynamic';
+// export const dynamic = 'force-dynamic';
+export const dynamic = 'auto'; // Use 'auto' to allow Next.js to decide when to use static or dynamic rendering
 
 export default async function HomePage() {
   const locations = await getLocations();
