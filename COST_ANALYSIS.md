@@ -96,19 +96,28 @@ Esta es una medida de seguridad muy potente, pero es una configuración avanzada
 
 ---
 
-## Cómo Detener los Cargos Potenciales (Deshabilitar la Aplicación)
+## Cómo Gestionar el Estado de la Aplicación
 
-Una vez que hayas terminado de usar o probar la aplicación, tienes dos opciones principales para asegurarte de que no se generen costes.
+Una vez que hayas terminado de usar o probar la aplicación, tienes las siguientes opciones para gestionar los costes.
 
 ### Opción 1: Inhabilitar la Facturación (Recomendado y Reversible)
 Esta es la forma más segura de "apagar" tu aplicación sin perder tu trabajo. Detendrá todos los servicios de pago, pero mantendrá tu proyecto y configuración intactos por si decides reactivarlos más adelante.
 
-**Pasos:**
+**Pasos para Deshabilitar:**
 1. Ve a la **Consola de Google Cloud**.
 2. En el menú de navegación (☰), ve a **Facturación**.
 3. Si tienes más de una cuenta de facturación, selecciona la cuenta vinculada a tu proyecto.
 4. En el menú de la cuenta de facturación, haz clic en **Administración de cuentas**.
 5. Busca tu proyecto en la lista. En la columna "Acciones", haz clic en el menú de tres puntos (⋮) y selecciona **Inhabilitar facturación**.
+
+**Pasos para Reactivar:**
+Si en el futuro decides volver a usar la aplicación, puedes reactivarla fácilmente volviendo a vincular tu cuenta de facturación.
+1. Ve a la **Consola de Google Cloud** y selecciona tu proyecto.
+2. En el menú de navegación (☰), ve a **Facturación**.
+3. Es posible que veas un mensaje indicando que "Este proyecto no tiene ninguna cuenta de facturación".
+4. Haz clic en el botón **"VINCULAR UNA CUENTA DE FACTURACIÓN"**.
+5. Selecciona tu cuenta de facturación existente en la lista y haz clic en **"ESTABLECER CUENTA"**.
+Los servicios de pago se reactivarán y tu aplicación volverá a estar en línea en unos minutos.
 
 ### Opción 2: Eliminar el Proyecto (Permanente e Irreversible)
 Si estás completamente seguro de que no necesitarás más este proyecto, puedes eliminarlo. Esto borrará todos los recursos asociados, incluyendo tu app alojada, bases de datos y configuraciones.
