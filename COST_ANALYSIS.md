@@ -93,3 +93,27 @@ Si prefieres que los servicios se detengan en lugar de generar cargos extra, nec
 4.  **Programar la función** para que realice una acción drástica, como **deshabilitar la facturación del proyecto** o desactivar la API específica.
 
 Esta es una medida de seguridad muy potente, pero es una configuración avanzada. Para la mayoría de los casos, las alertas por correo electrónico son suficientes para mantener el control.
+
+---
+
+## Cómo Detener los Cargos Potenciales (Deshabilitar la Aplicación)
+
+Una vez que hayas terminado de usar o probar la aplicación, tienes dos opciones principales para asegurarte de que no se generen costes.
+
+### Opción 1: Inhabilitar la Facturación (Recomendado y Reversible)
+Esta es la forma más segura de "apagar" tu aplicación sin perder tu trabajo. Detendrá todos los servicios de pago, pero mantendrá tu proyecto y configuración intactos por si decides reactivarlos más adelante.
+
+**Pasos:**
+1. Ve a la **Consola de Google Cloud**.
+2. En el menú de navegación (☰), ve a **Facturación**.
+3. Si tienes más de una cuenta de facturación, selecciona la cuenta vinculada a tu proyecto.
+4. En el menú de la cuenta de facturación, haz clic en **Administración de cuentas**.
+5. Busca tu proyecto en la lista. En la columna "Acciones", haz clic en el menú de tres puntos (⋮) y selecciona **Inhabilitar facturación**.
+
+### Opción 2: Eliminar el Proyecto (Permanente e Irreversible)
+Si estás completamente seguro de que no necesitarás más este proyecto, puedes eliminarlo. Esto borrará todos los recursos asociados, incluyendo tu app alojada, bases de datos y configuraciones.
+
+**Pasos:**
+1. En la **Consola de Google Cloud**, ve a **IAM y administración > Configuración del proyecto**.
+2. Haz clic en el botón **CERRAR** en la parte superior.
+3. Sigue las instrucciones en pantalla para confirmar la eliminación del proyecto. Se te pedirá que introduzcas el ID del proyecto para confirmar.
